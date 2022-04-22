@@ -1,12 +1,8 @@
 import Head from 'next/head'
-import {useRouter} from 'next/router'
 import {Layout} from '../components'
 import {getParams, convertMarkdownToHTML, getMarkdownIds} from '../utils'
 
 const Challenge = ({ids, activeId, content}: {ids: string, activeId: string, content: string}) => {
-  const {query} = useRouter()
-  console.log(query);
-
   return (
     <Layout ids={ids}>
       <Head>
