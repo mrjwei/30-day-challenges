@@ -3,9 +3,12 @@ import path from 'path'
 import matter from 'gray-matter'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
+import remarkDirective from 'remark-directive'
 import remarkRehype from 'remark-rehype'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeStringify from 'rehype-stringify'
+import {visit} from 'unist-util-visit'
+
 
 const dir = path.join(process.cwd(), "markdowns")
 const filenames = fs.readdirSync(dir)
@@ -26,7 +29,37 @@ export const getParams = () => {
   })
 }
 
+const remarkIframePlugin = () => {
+  return (tree: any, file: any) => {
+    visit(tree, (node) => {
+      if (
+        node.type === 'textDirective' ||
+        node.type === 'leafDirective' ||
+        node.type === 'containerDirective'
+      ) {
+        if (node.name !== 'demo') return
 
+        const data = node.data || (node.data = {})
+        const attributes = node.attributes || {}
+        const id = attributes.id
+
+        // if (node.type === 'textDirective') file.fail('Text directives for `demo` not supported', node)
+        // if (!id) file.fail('Missing demo id', node)
+
+        data.hName = 'iframe'
+        data.hProperties = {
+          src: 'https://raw.githubusercontent.com/mrjwei/30-day-challenges/main/public/demos/swap-elements-by-drag-and-drop.html',
+          width: 200,
+          height: 200,
+          frameBorder: 0,
+          allow: 'picture-in-picture',
+          allowFullScreen: true
+        }
+      }
+      return node
+    })
+  }
+}
 
 export const convertMarkdownToHTML = async (id: string) => {
   const fullPath = path.join(dir, `${id}.md`)
@@ -34,6 +67,8 @@ export const convertMarkdownToHTML = async (id: string) => {
 
   const html = await unified()
   .use(remarkParse)
+  .use(remarkDirective)
+  .use(remarkIframePlugin)
   .use(remarkRehype)
   .use(rehypeHighlight)
   .use(rehypeStringify)
