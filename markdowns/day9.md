@@ -207,22 +207,3 @@ Today, I broke away temporarily from *Eloquent Javascript* and explored ways to 
 </body>
 </html>
 ```
-
-## Notes
-
-- Reversing an array in place takes much more time than returning a new array with reversed order, as the following performance benchmarking shows.
-
-![perflink showing returning a new array with reversed order is faster](/images/day8-perflink.png)
-*Returning a new array with reversed order is faster*
-
-- In `reverseArrayInPlace` function, instead of `[arr[i] , arr[arr.length - 1 - i]] = [arr[arr.length - 1 - i], arr[i]]`, you could do,
-
-```js
-...
-const tmp = arr[i]
-arr[i] = arr[arr.length - 1 - i]
-arr[arr.length - 1 - i] = tmp
-...
-```
-
-but I feel it a bit verbose, considering `[a, b] = [b, a]` syntax are common in many languages, not just Javascript.

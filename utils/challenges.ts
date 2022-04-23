@@ -48,9 +48,9 @@ const remarkIframePlugin = () => {
 
         data.hName = 'iframe'
         data.hProperties = {
-          src: 'https://raw.githubusercontent.com/mrjwei/30-day-challenges/main/public/demos/swap-elements-by-drag-and-drop.html',
-          width: 200,
-          height: 200,
+          src: '/demos/swap-elements-by-drag-and-drop.html',
+          width: '100%',
+          height: 500,
           frameBorder: 0,
           allow: 'picture-in-picture',
           allowFullScreen: true
@@ -69,7 +69,7 @@ export const convertMarkdownToHTML = async (id: string) => {
   .use(remarkParse)
   .use(remarkDirective)
   .use(remarkIframePlugin)
-  .use(remarkRehype)
+  .use(remarkRehype as any)
   .use(rehypeHighlight)
   .use(rehypeStringify)
   .process(matter(markdown).content)
