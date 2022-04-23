@@ -43,9 +43,6 @@ const remarkIframePlugin = () => {
         const attributes = node.attributes || {}
         const id = attributes.id
 
-        // if (node.type === 'textDirective') file.fail('Text directives for `demo` not supported', node)
-        // if (!id) file.fail('Missing demo id', node)
-
         data.hName = 'iframe'
         data.hProperties = {
           src: '/demos/swap-elements-by-drag-and-drop.html',
@@ -69,7 +66,7 @@ export const convertMarkdownToHTML = async (id: string) => {
   .use(remarkParse)
   .use(remarkDirective)
   .use(remarkIframePlugin)
-  .use(remarkRehype as any)
+  .use(remarkRehype as any) // TODO: resolve type
   .use(rehypeHighlight)
   .use(rehypeStringify)
   .process(matter(markdown).content)

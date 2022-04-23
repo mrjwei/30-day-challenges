@@ -178,7 +178,7 @@ Today, I broke away temporarily from *Eloquent Javascript* and explored ways to 
 
         /**
          * Falls back to styles specified in css and
-         * hover styles applies properly.
+         * hover styles apply properly.
          * Using:
          *   draggingEl.style.color = "grey"
          *   draggingEl.style.borderColor = "grey"
