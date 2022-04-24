@@ -1,4 +1,4 @@
-# Day 8: Swap Elements by Drag-and-Drop
+# Day 9: Swap Elements by Drag-and-Drop
 
 Today, I broke away temporarily from *Eloquent Javascript* and explored ways to swap elements in an unordered list, for example, by dragging and dropping. This project is inspired by a great article on [HTML DOM](https://htmldom.dev/drag-and-drop-element-in-a-list/). I borrowed a few ideas from the article, but generally coded it in my own way.
 
