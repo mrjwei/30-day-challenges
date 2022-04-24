@@ -3,9 +3,11 @@ import {
   getParams,
   convertMarkdownToHTML
 } from './challenges'
+import {sortMenuItems} from './functions'
 
 export {
   getMarkdownIds,
   getParams,
-  convertMarkdownToHTML
+  convertMarkdownToHTML,
+  sortMenuItems
 }

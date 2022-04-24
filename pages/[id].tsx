@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import {Layout} from '../components'
 import {getParams, convertMarkdownToHTML, getMarkdownIds} from '../utils'
+import {sortMenuItems} from '../utils'
 
 const Challenge = ({ids, activeId, content}: {ids: string, activeId: string, content: string}) => {
   return (
@@ -36,7 +37,7 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = async (context: any) => {
-  const ids = getMarkdownIds()
+  const ids = getMarkdownIds().sort(sortMenuItems)
   const content = await convertMarkdownToHTML(context.params.id)
   return {
     props: {

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import {Layout} from '../components'
 import {getMarkdownIds, convertMarkdownToHTML} from '../utils'
+import {sortMenuItems} from '../utils'
 
 const Top = ({ids, content}: any) => {
   return (
@@ -28,7 +29,7 @@ const Top = ({ids, content}: any) => {
 export default Top
 
 export const getStaticProps = async () => {
-  const ids = getMarkdownIds()
+  const ids = getMarkdownIds().sort(sortMenuItems)
   const content = await convertMarkdownToHTML("top")
 
   return {
