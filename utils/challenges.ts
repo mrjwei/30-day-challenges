@@ -30,7 +30,7 @@ export const getParams = () => {
 }
 
 const remarkIframePlugin = () => {
-  return (tree: any, file: any) => {
+  return (tree: any) => {
     visit(tree, (node) => {
       if (
         node.type === 'textDirective' ||
@@ -41,11 +41,11 @@ const remarkIframePlugin = () => {
 
         const data = node.data || (node.data = {})
         const attributes = node.attributes || {}
-        const id = attributes.id
+        const filename = attributes.filename
 
         data.hName = 'iframe'
         data.hProperties = {
-          src: '/demos/swap-elements-by-drag-and-drop.html',
+          src: '/demos/' + filename,
           width: '100%',
           height: 500,
           frameBorder: 0,

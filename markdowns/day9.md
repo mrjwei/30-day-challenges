@@ -4,7 +4,7 @@ Today, I broke away temporarily from *Eloquent Javascript* and explored ways to 
 
 ## Expected Output
 
-::demo[]{}
+::demo[]{filename=swap-elements-by-drag-and-drop.html}
 
 ## Code
 
