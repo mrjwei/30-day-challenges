@@ -38,7 +38,7 @@ export const Layout = ({ids, children}: {ids: any, children: React.ReactNode}) =
   return (
     <div>
       <Header handleMenuToggle={handleMenuToggle} />
-      <div className="container relative p-12 md:grid md:grid-cols-4 md:gap-12 xl:px-24">
+      <div className="container relative px-6 py-12 md:grid md:grid-cols-4 md:gap-12 xl:px-24">
         {windowWidth < 768 ? (
           isMenuOpen && <Nav ids={ids} handleMenuToggle={handleMenuToggle} />
         ) : (

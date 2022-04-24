@@ -5,7 +5,7 @@ import {MdMenu} from 'react-icons/md'
 export const Header = ({handleMenuToggle}: any) => {
   return (
     <header className="bg-gray-100">
-      <div className="container flex justify-between items-center px-12 py-3 xl:px-24">
+      <div className="container flex justify-between items-center px-6 py-3 xl:px-24">
         <Link href="/">
           <a>
             <h1 className="text-xl md:text-2xl">30-Day Challenges</h1>
