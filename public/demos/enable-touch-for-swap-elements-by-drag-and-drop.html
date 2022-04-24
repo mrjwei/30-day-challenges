@@ -4,13 +4,20 @@
   <meta charset="UTF-8">
   <title>Swap Elements by Drag-and-Drop</title>
   <style>
+    body {
+      margin: 0;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     * {
       box-sizing: border-box;
     }
     ul {
       list-style: none;
       padding: 0;
-      margin: 0 auto;
+      margin: 0;
       width: 16rem;
       position: relative;
     }
@@ -25,6 +32,7 @@
       height: 4rem;
       width: 100%;
       color: grey;
+      background-color: white;
       border: 2px solid grey;
     }
     .item:hover {
