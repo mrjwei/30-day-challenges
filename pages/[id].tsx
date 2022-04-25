@@ -15,7 +15,7 @@ const Challenge = ({ids, activeId, content}: {ids: string, activeId: string, con
         dangerouslySetInnerHTML={{
           __html: `
             <div
-              class="prose max-w-none"
+              class="prose max-w-none prose-h4:text-lg prose-h4:underline"
             >
               ${content}
             </div>
