@@ -2,13 +2,27 @@
 
 Yesterday, I built a tiny project, [Swap Elements by Drag-and-Drop](/day9) which only handled mouse events. Today, I enhanced it by enabling it to handle touch events as well and refactored code to make it cleaner.
 
-## Expected Output
+## Demo
 
 ::demo[]{filename=enable-touch-for-swap-elements-by-drag-and-drop.html}
 
+Source code can be found [here](https://github.com/mrjwei/swap-elements-by-drag-and-drop).
+
 ## Code
 
-### Handle Mouse Down and Touch Start
+### CSS
+
+```css
+.item {
+  ...
+  /* this line prevents items to scroll */
+  touch-action: none;
+}
+```
+
+### Javascript
+
+#### Handle Mouse Down and Touch Start
 
 ```js
 const handleStart = (isTouchEvent = false) => {
@@ -42,12 +56,12 @@ const handleStart = (isTouchEvent = false) => {
 }
 ```
 
-### Handle Mouse Move and Touch Move
+#### Handle Mouse Move and Touch Move
 
 ```js
 const handleMove = (isTouchEvent = false) => {
   return (event) => {
-    if (!isDraggingStarted) { // only create placeholder once
+    if (!isDraggingStarted) {
       isDraggingStarted = true
 
       placeholder = createPlaceholder()
@@ -85,7 +99,7 @@ const handleMove = (isTouchEvent = false) => {
 }
 ```
 
-### Handle Mouse Up and Touch End
+#### Handle Mouse Up and Touch End
 
 ```js
 const handleEnd = (isTouchEvent = false) => {
@@ -95,7 +109,6 @@ const handleEnd = (isTouchEvent = false) => {
       draggingEl.style.removeProperty("left")
       draggingEl.style.removeProperty("position")
 
-      // fix draggingEl at placeholder's current position
       draggingEl.parentNode.insertBefore(draggingEl, placeholder)
 
       placeholder && draggingEl.parentNode.removeChild(placeholder)
@@ -130,7 +143,7 @@ const handleEnd = (isTouchEvent = false) => {
 }
 ```
 
-### Attach Mouse Down and Touch Start Handlers
+#### Attach Mouse Down and Touch Start Handlers
 
 ```js
 Array.from(items).forEach(item => {
@@ -138,3 +151,11 @@ Array.from(items).forEach(item => {
   item.addEventListener("touchstart", handleStart(true))
 })
 ```
+
+## Takeaways
+
+- Touch events should be handled otherwise the demo does not work on mobile devices.
+- Handling touch events is comparable handling mouse events, with some key differences, including:
+  - There can be multiple touch points and thus multiple touch events fired simultaneously, as opposed to mouse which is assumed to be only one at a time by default.
+  - The first step to handle touch events is to get a list of the active touch points. `event.changedTouches` does this for us.
+- Browsers like Chrome make touch event handlers [passive](https://developer.chrome.com/blog/scrolling-intervention/) by default, which means scrolling is not interrupted during the handling of the touch event. But this is not what I want in this project where the draggable items should not scroll. I used the suggested `touch-action: none;` CSS style to the elements that should not scroll and solved the problem quite easily.
