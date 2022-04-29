@@ -6,13 +6,11 @@ import {
   MdKeyboardArrowUp
 } from 'react-icons/md'
 import {IMeta} from '../types'
-
-const calcInitNum = (asPath: string) => {
-  if (asPath === "/top") {
-    return 5
-  }
-  return parseInt(asPath.replace("/day", "")) + 1
-}
+import {
+  calcInitNumNavItemsToDisplay,
+  normalizeNavItemText,
+  isActiveLink
+} from '../utils'
 
 export const Nav = ({
   metas,
@@ -23,7 +21,7 @@ export const Nav = ({
 }) => {
   const {query, asPath} = useRouter()
 
-  const [numToDisplay, setNumToDisplay] = useState(calcInitNum(asPath))
+  const [numToDisplay, setNumToDisplay] = useState(calcInitNumNavItemsToDisplay(asPath))
 
   const handleShowMore = () => {
     setNumToDisplay(prevNum => prevNum + 5)
@@ -82,13 +80,13 @@ export const Nav = ({
                         hover:text-black
                         hover:after:bg-black
                         hover:bg-gray-100
-                        ${query.id === id && "text-black after:bg-black"}
+                        ${isActiveLink(query, id) && "text-black after:bg-black"}
                         p-2
                         pl-4
                       `}
                       onClick={handleMenuToggle}
                     >
-                      {id === "top" ? "Top" : `${id.replace("d", "D")}: ${title}`}
+                      {normalizeNavItemText(id, title)}
                     </a>
                   </Link>
                 </li>
