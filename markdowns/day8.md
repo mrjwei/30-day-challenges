@@ -1,3 +1,7 @@
+---
+title: "Reversing an Array"
+---
+
 # Day 8: Reversing an Array
 
 ## Expected Output

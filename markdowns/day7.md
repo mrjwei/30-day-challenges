@@ -1,3 +1,7 @@
+---
+title: "The Sum of a Range"
+---
+
 # Day 7: The Sum of a Range
 
 ## Expected Output

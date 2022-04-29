@@ -1,105 +1,138 @@
-import {memo} from 'react'
+import {useState} from 'react'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
+import {
+  MdKeyboardArrowDown,
+  MdKeyboardArrowUp
+} from 'react-icons/md'
+import {IMeta} from '../types'
 
-export const Nav = ({ids, handleMenuToggle}: any) => {
-  const {pathname, query} = useRouter()
+const calcInitNum = (asPath: string) => {
+  if (asPath === "/top") {
+    return 5
+  }
+  return parseInt(asPath.replace("/day", "")) + 1
+}
+
+export const Nav = ({
+  metas,
+  handleMenuToggle
+}: {
+  metas: IMeta[],
+  handleMenuToggle: () => void
+}) => {
+  const {query, asPath} = useRouter()
+
+  const [numToDisplay, setNumToDisplay] = useState(calcInitNum(asPath))
+
+  const handleShowMore = () => {
+    setNumToDisplay(prevNum => prevNum + 5)
+  }
+
+  const handleShowLess = () => {
+    setNumToDisplay(prevNum => prevNum - 5)
+  }
 
   return (
     <nav className="
-          absolute
           bg-white
-          shadow-2xl
           top-0
           right-0
-          md:static
-          md:bg-none
-          md:shadow-none
-          md:col-span-1
+          static
+          bg-none
+          col-span-1
         "
       >
         <ul>
-          <Link href="/">
-            <a
-              className={`
-                relative
-                block
-                w-full
-                text-left
-                px-12
-                py-3
-                transition-all
-                ease-in-out
-                duration-300
-                text-gray-400
-                md:after:content-['']
-                md:after:block
-                md:after:w-[3px]
-                md:after:h-full
-                md:after:bg-gray-100
-                md:after:absolute
-                md:after:top-0
-                md:after:left-0
-                md:after:transition-all
-                md:after:ease-in-out
-                md:after:duration-300
-                hover:text-black
-                hover:after:bg-black
-                hover:bg-gray-100
-                ${pathname === "/" && "text-black md:after:bg-black"}
-                md:p-2
-                md:pl-4
-              `}
-              onClick={handleMenuToggle}
-            >
-              Top
-            </a>
-          </Link>
-          {ids.filter((id: string) => id !== "top").map((id: string) => {
-            return (
-              <li
-                key={id}
-              >
-                <Link href={`/${id}`}>
-                  <a
-                    className={`
-                      relative
-                      block
-                      w-full
-                      text-left
-                      px-12
-                      py-3
-                      transition-all
-                      ease-in-out
-                      duration-300
-                      text-gray-400
-                      md:after:content-['']
-                      md:after:block
-                      md:after:w-[3px]
-                      md:after:h-full
-                      md:after:bg-gray-100
-                      md:after:absolute
-                      md:after:top-0
-                      md:after:left-0
-                      md:after:transition-all
-                      md:after:ease-in-out
-                      md:after:duration-300
-                      hover:text-black
-                      hover:after:bg-black
-                      hover:bg-gray-100
-                      ${query.id === id && "text-black md:after:bg-black"}
-                      md:p-2
-                      md:pl-4
-                    `}
-                    onClick={handleMenuToggle}
-                  >
-                    {id.replace("d", "D")}
-                  </a>
-                </Link>
-              </li>
-            )
+          {metas
+            .slice(0, numToDisplay)
+            .map((meta: IMeta) => {
+              const {id, title} = meta
+              return (
+                <li
+                  key={id}
+                >
+                  <Link href={`/${id}`}>
+                    <a
+                      className={`
+                        relative
+                        block
+                        w-full
+                        text-left
+                        px-12
+                        py-3
+                        transition-all
+                        ease-in-out
+                        duration-300
+                        text-gray-400
+                        whitespace-nowrap
+                        overflow-hidden
+                        text-ellipsis
+                        after:content-['']
+                        after:block
+                        after:w-[3px]
+                        after:h-full
+                        after:bg-gray-100
+                        after:absolute
+                        after:top-0
+                        after:left-0
+                        after:transition-all
+                        after:ease-in-out
+                        after:duration-300
+                        hover:text-black
+                        hover:after:bg-black
+                        hover:bg-gray-100
+                        ${query.id === id && "text-black after:bg-black"}
+                        p-2
+                        pl-4
+                      `}
+                      onClick={handleMenuToggle}
+                    >
+                      {id === "top" ? "Top" : `${id.replace("d", "D")}: ${title}`}
+                    </a>
+                  </Link>
+                </li>
+              )
           })}
         </ul>
+        {numToDisplay >= metas.length ? (
+          <button
+            className="
+              flex
+              w-full
+              px-4
+              py-1
+              mt-4
+              bg-[#f8e4e4]
+              text-[#b54e4e]
+              text-sm
+              items-center
+              justify-between
+            "
+            onClick={handleShowLess}
+          >
+            Show Less <MdKeyboardArrowUp className="text-2xl ml-3" />
+          </button>
+        ) : (
+          <button
+            className="
+              flex
+              w-full
+              px-4
+              py-1
+              mt-4
+              bg-[#f8e4e4]
+              text-[#b54e4e]
+              text-sm
+              items-center
+              justify-between
+            "
+            disabled={numToDisplay >= metas.length}
+            onClick={handleShowMore}
+          >
+            Show More <MdKeyboardArrowDown className="text-2xl ml-3" />
+          </button>
+        )}
       </nav>
   )
 }

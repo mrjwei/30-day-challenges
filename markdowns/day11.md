@@ -1,3 +1,7 @@
+---
+title: "Refactor Day9 & Day10 Challenges"
+---
+
 # Day 11: Refactor Day9 & Day10 Challenges
 
 To make code more readable for previous challenges (see [Swap Elements by Drag-and-Drop](/day9) and [Handle Touch Events For Day 9 Challenge](/day10)), I created a class to encapsulate related code blocks.

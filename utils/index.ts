@@ -1,13 +1,11 @@
 import {
-  getMarkdownIds,
+  getMarkdownIdsAndTitles,
   getParams,
   convertMarkdownToHTML
 } from './challenges'
-import {sortMenuItems} from './functions'
 
 export {
-  getMarkdownIds,
+  getMarkdownIdsAndTitles,
   getParams,
-  convertMarkdownToHTML,
-  sortMenuItems
+  convertMarkdownToHTML
 }

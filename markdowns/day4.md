@@ -1,3 +1,7 @@
+---
+title: Minimum
+---
+
 # Day 4: Minimum
 
 ## Expected Output

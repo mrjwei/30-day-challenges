@@ -1,3 +1,7 @@
+---
+title: FizzBuzz
+---
+
 # Day 2: FizzBuzz
 
 ## Expected Output

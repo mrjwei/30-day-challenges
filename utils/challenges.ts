@@ -8,18 +8,34 @@ import remarkRehype from 'remark-rehype'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeStringify from 'rehype-stringify'
 import {visit} from 'unist-util-visit'
-
+import type {IMeta, IParams} from '../types'
 
 const dir = path.join(process.cwd(), "markdowns")
 const filenames = fs.readdirSync(dir)
 
-export const getMarkdownIds = () => {
-  return filenames.map(filename => {
-    return filename.replace(/\.md$/, "")
+export const getMarkdownIdsAndTitles = (): IMeta[] => {
+  const data =  filenames.map(filename => {
+    const id = filename.replace(/\.md$/, "")
+
+    const fullPath = path.join(dir, `${id}.md`)
+    const markdown = fs.readFileSync(fullPath, "utf8")
+
+    const frontMatter = matter(markdown).data
+
+    return {
+      id,
+      title: frontMatter.title
+    }
   })
+  const sortedDataWithoutTop = data.filter(meta => meta.id !== "top").sort((a: any, b: any) => {
+    const dayNum1 = parseInt(a.id.replace("day", ""))
+    const dayNum2 = parseInt(b.id.replace("day", ""))
+    return dayNum1 - dayNum2
+  })
+  return [{id: "top", title: "30-Day Challenges"}, ...sortedDataWithoutTop]
 }
 
-export const getParams = () => {
+export const getParams = (): IParams[] => {
   return filenames.map(filename => {
     return {
       params: {
@@ -58,7 +74,7 @@ const remarkIframePlugin = () => {
   }
 }
 
-export const convertMarkdownToHTML = async (id: string) => {
+export const convertMarkdownToHTML = async (id: string): Promise<string> => {
   const fullPath = path.join(dir, `${id}.md`)
   const markdown = fs.readFileSync(fullPath, "utf8")
 

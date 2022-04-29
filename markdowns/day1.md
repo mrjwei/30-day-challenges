@@ -1,3 +1,7 @@
+---
+title: "Looping a Triangle"
+---
+
 # Day 1: Looping a Triangle
 
 ## Expected Output

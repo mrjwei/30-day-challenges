@@ -1,3 +1,7 @@
+---
+title: "30-Day Challenges"
+---
+
 # 30-Day Challenges
 
 This is the app demonstrating my 30-day coding challenges.

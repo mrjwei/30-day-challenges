@@ -1,3 +1,7 @@
+---
+title: "Handle Touch Events For Day 9 Challenge"
+---
+
 # Day 10: Handle Touch Events For Day 9 Challenge
 
 Yesterday, I built a tiny project, [Swap Elements by Drag-and-Drop](/day9) which only handled mouse events. Today, I enhanced it by enabling it to handle touch events as well and refactored code to make it cleaner.

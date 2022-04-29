@@ -1,3 +1,7 @@
+---
+title: "Bean Counting"
+---
+
 # Day 6: Bean Counting
 
 ## Expected Output

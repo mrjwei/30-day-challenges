@@ -1,3 +1,7 @@
+---
+title: "A List"
+---
+
 # Day 12: A List
 
 Today I'm back to *Eloquent Javascript* book.

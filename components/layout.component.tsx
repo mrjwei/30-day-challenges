@@ -1,7 +1,7 @@
 import {useState, useEffect, useCallback} from 'react'
-import {Header, Nav} from '.'
+import {Header, Nav, MobileNav} from '.'
 
-export const Layout = ({ids, children}: {ids: any, children: React.ReactNode}) => {
+export const Layout = ({metas, children}: {metas: any, children: React.ReactNode}) => {
   const [windowWidth, setWindowWidth] = useState<null | number>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -38,11 +38,18 @@ export const Layout = ({ids, children}: {ids: any, children: React.ReactNode}) =
   return (
     <div>
       <Header handleMenuToggle={handleMenuToggle} />
-      <div className="container relative px-6 py-12 md:grid md:grid-cols-4 md:gap-12 xl:px-24">
+      <div className="container px-6 py-12 md:grid md:grid-cols-4 md:gap-12 xl:px-24">
         {windowWidth < 768 ? (
-          isMenuOpen && <Nav ids={ids} handleMenuToggle={handleMenuToggle} />
+          <MobileNav
+            metas={metas}
+            isOpen={isMenuOpen}
+            handleMenuToggle={handleMenuToggle}
+          />
         ) : (
-          <Nav ids={ids} handleMenuToggle={handleMenuToggle} />
+          <Nav
+            metas={metas}
+            handleMenuToggle={handleMenuToggle}
+          />
         )}
         <main className="md:col-span-3">
           {children}

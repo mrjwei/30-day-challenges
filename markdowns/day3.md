@@ -1,3 +1,7 @@
+---
+title: Chessboard
+---
+
 # Day 3: Chessboard
 
 ## Expected Output

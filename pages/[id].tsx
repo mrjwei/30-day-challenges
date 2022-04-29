@@ -1,11 +1,19 @@
 import Head from 'next/head'
 import {Layout} from '../components'
-import {getParams, convertMarkdownToHTML, getMarkdownIds} from '../utils'
-import {sortMenuItems} from '../utils'
+import {getParams, convertMarkdownToHTML, getMarkdownIdsAndTitles} from '../utils'
+import {IMeta} from '../types';
 
-const Challenge = ({ids, activeId, content}: {ids: string, activeId: string, content: string}) => {
+const Challenge = ({
+  metas,
+  activeId,
+  content
+}: {
+  metas: IMeta[],
+  activeId: string,
+  content: string
+}) => {
   return (
-    <Layout ids={ids}>
+    <>
       <Head>
         <title>30-Day Challenges: {activeId}</title>
         <meta name="description" content={`30-day challenges: ${activeId}`} />
@@ -22,7 +30,7 @@ const Challenge = ({ids, activeId, content}: {ids: string, activeId: string, con
           `
         }}
       />
-    </Layout>
+    </>
   )
 }
 
@@ -37,11 +45,11 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = async (context: any) => {
-  const ids = getMarkdownIds().sort(sortMenuItems)
+  const metas = getMarkdownIdsAndTitles()
   const content = await convertMarkdownToHTML(context.params.id)
   return {
     props: {
-      ids,
+      metas,
       activeId: context.params.id,
       content
     }
