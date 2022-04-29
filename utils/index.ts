@@ -3,9 +3,17 @@ import {
   getParams,
   convertMarkdownToHTML
 } from './challenges'
+import {
+  calcInitNumNavItemsToDisplay,
+  normalizeNavItemText,
+  isActiveLink
+} from './functions'
 
 export {
   getMarkdownIdsAndTitles,
   getParams,
-  convertMarkdownToHTML
+  convertMarkdownToHTML,
+  calcInitNumNavItemsToDisplay,
+  normalizeNavItemText,
+  isActiveLink
 }
