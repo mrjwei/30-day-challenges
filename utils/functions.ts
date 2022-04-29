@@ -12,8 +12,8 @@ export const normalizeNavItemText = (id: string, title: string) => {
   return `${id.replace("d", "D")}: ${title}`
 }
 
-export const isActiveLink = (query: {id: string | undefined}, id: string) => {
-  if (query.id === id || (query.id === undefined && id === "top")) {
+export const isActiveLink = (queryId: string | string[] | undefined, id: string) => {
+  if (queryId === id || (queryId === undefined && id === "top")) {
     return true
   }
   return false
