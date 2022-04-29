@@ -10,10 +10,10 @@ import rehypeStringify from 'rehype-stringify'
 import {visit} from 'unist-util-visit'
 import type {IMeta, IParams} from '../types'
 
-const dir = path.join(process.cwd(), "markdowns")
-const filenames = fs.readdirSync(dir)
-
 export const getMarkdownIdsAndTitles = (): IMeta[] => {
+  const dir = path.join(process.cwd(), "markdowns")
+  const filenames = fs.readdirSync(dir)
+
   const data =  filenames.map(filename => {
     const id = filename.replace(/\.md$/, "")
 
@@ -36,6 +36,9 @@ export const getMarkdownIdsAndTitles = (): IMeta[] => {
 }
 
 export const getParams = (): IParams[] => {
+  const dir = path.join(process.cwd(), "markdowns")
+  const filenames = fs.readdirSync(dir)
+
   return filenames.map(filename => {
     return {
       params: {
@@ -75,6 +78,7 @@ const remarkIframePlugin = () => {
 }
 
 export const convertMarkdownToHTML = async (id: string): Promise<string> => {
+  const dir = path.join(process.cwd(), "markdowns")
   const fullPath = path.join(dir, `${id}.md`)
   const markdown = fs.readFileSync(fullPath, "utf8")
 
