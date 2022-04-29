@@ -80,7 +80,7 @@ export const Nav = ({
                         hover:text-black
                         hover:after:bg-black
                         hover:bg-gray-100
-                        ${isActiveLink(query, id) && "text-black after:bg-black"}
+                        ${isActiveLink(query.id, id) && "text-black after:bg-black"}
                         p-2
                         pl-4
                       `}
