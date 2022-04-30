@@ -1,14 +1,23 @@
 import Head from 'next/head'
 import {Layout} from '../components'
-import {getMarkdownIdsAndTitles, convertMarkdownToHTML} from '../utils'
+import {
+  getMarkdownIdsAndTitles,
+  convertMarkdownToHTML,
+  getNextIdAndTitle
+} from '../utils'
 import {IMeta} from '../types'
+import {Pagination} from '../components'
 
 const Top = ({
   metas,
-  content
+  content,
+  nextId,
+  nextTitle
 }: {
   metas: IMeta[],
-  content: string
+  content: string,
+  nextId: string,
+  nextTitle: string
 }) => {
   return (
     <>
@@ -28,20 +37,28 @@ const Top = ({
           `
         }}
       />
+      <Pagination
+        prevId={null}
+        prevTitle={null}
+        nextId={nextId}
+        nextTitle={nextTitle}
+      />
     </>
   )
 }
 
 export default Top
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (context: any) => {
   const metas = getMarkdownIdsAndTitles()
   const content = await convertMarkdownToHTML("top")
-
+  const [nextId, nextTitle] = context.params ? getNextIdAndTitle(metas, context.params.id) : getNextIdAndTitle(metas, "top")
   return {
     props: {
       metas,
-      content
+      content,
+      nextId,
+      nextTitle
     }
   }
 }

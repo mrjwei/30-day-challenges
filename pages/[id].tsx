@@ -1,16 +1,31 @@
 import Head from 'next/head'
 import {Layout} from '../components'
-import {getParams, convertMarkdownToHTML, getMarkdownIdsAndTitles} from '../utils'
+import {
+  getParams,
+  convertMarkdownToHTML,
+  getMarkdownIdsAndTitles,
+  getPrevIdAndTitle,
+  getNextIdAndTitle
+} from '../utils'
 import {IMeta} from '../types';
+import {Pagination} from '../components'
 
 const Challenge = ({
   metas,
   activeId,
-  content
+  content,
+  prevId,
+  prevTitle,
+  nextId,
+  nextTitle
 }: {
   metas: IMeta[],
   activeId: string,
-  content: string
+  content: string,
+  prevId: string,
+  prevTitle: string,
+  nextId: string,
+  nextTitle: string
 }) => {
   return (
     <>
@@ -30,6 +45,12 @@ const Challenge = ({
           `
         }}
       />
+      <Pagination
+        prevId={prevId}
+        prevTitle={prevTitle}
+        nextId={nextId}
+        nextTitle={nextTitle}
+      />
     </>
   )
 }
@@ -47,11 +68,17 @@ export const getStaticPaths = () => {
 export const getStaticProps = async (context: any) => {
   const metas = getMarkdownIdsAndTitles()
   const content = await convertMarkdownToHTML(context.params.id)
+  const [prevId, prevTitle] = getPrevIdAndTitle(metas, context.params.id)
+  const [nextId, nextTitle] = getNextIdAndTitle(metas, context.params.id)
   return {
     props: {
       metas,
       activeId: context.params.id,
-      content
+      content,
+      prevId,
+      prevTitle,
+      nextId,
+      nextTitle
     }
   }
 }

@@ -6,7 +6,9 @@ import {
 import {
   calcInitNumNavItemsToDisplay,
   normalizeNavItemText,
-  isActiveLink
+  isActiveLink,
+  getPrevIdAndTitle,
+  getNextIdAndTitle
 } from './functions'
 
 export {
@@ -15,5 +17,7 @@ export {
   convertMarkdownToHTML,
   calcInitNumNavItemsToDisplay,
   normalizeNavItemText,
-  isActiveLink
+  isActiveLink,
+  getPrevIdAndTitle,
+  getNextIdAndTitle
 }
