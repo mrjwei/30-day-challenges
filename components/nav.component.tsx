@@ -34,11 +34,11 @@ export const Nav = ({
   return (
     <nav className="
           bg-white
-          top-0
-          right-0
-          static
           bg-none
           col-span-1
+          self-start
+          sticky
+          top-12
         "
       >
         <ul>
