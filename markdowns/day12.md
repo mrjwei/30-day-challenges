@@ -1,8 +1,8 @@
 ---
-title: "A List"
+title: "A List (Part 1)"
 ---
 
-# Day 12: A List
+# Day 12: A List (Part 1)
 
 Today I'm back to *Eloquent Javascript* book.
 
@@ -55,5 +55,5 @@ const arrayToList = (arr) => {
 
 Solution 2 seems to also have a performance edge over solution 1. I tried different sizes of arrays with similar outcomes.
 
-![perflink showing returning a new array with reversed order is faster](/images/day12-perflink.png)
+![perflink showing solution 2 runs more than twice as fast as solution 1](/images/day12-perflink.png)
 *Solution 2 runs more than twice as fast as solution 1*
