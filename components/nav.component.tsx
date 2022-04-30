@@ -77,10 +77,10 @@ export const Nav = ({
                         after:transition-all
                         after:ease-in-out
                         after:duration-300
-                        hover:text-black
-                        hover:after:bg-black
-                        hover:bg-gray-100
-                        ${isActiveLink(query.id, id) && "text-black after:bg-black"}
+                        hover:text-red-primary
+                        hover:after:bg-red-primary
+                        hover:bg-red-light
+                        ${isActiveLink(query.id, id) && "text-red-primary after:bg-red-primary"}
                         p-2
                         pl-4
                       `}
@@ -96,39 +96,38 @@ export const Nav = ({
         {numToDisplay >= metas.length ? (
           <button
             className="
-              flex
-              w-full
-              px-4
-              py-1
-              mt-4
-              bg-[#f8e4e4]
-              text-[#b54e4e]
-              text-sm
-              items-center
-              justify-between
+            w-full
+            px-4
+            py-1
+            mt-4
+            border-[1px]
+            border-red-light
+            text-red-secondary
+            rounded-sm
+            text-sm
+            text-center
             "
             onClick={handleShowLess}
           >
-            Show Less <MdKeyboardArrowUp className="text-2xl ml-3" />
+            Show Less
           </button>
         ) : (
           <button
             className="
-              flex
               w-full
               px-4
               py-1
               mt-4
-              bg-[#f8e4e4]
-              text-[#b54e4e]
+              bg-red-light
+              text-red-secondary
+              rounded-sm
               text-sm
-              items-center
-              justify-between
+              text-center
             "
             disabled={numToDisplay >= metas.length}
             onClick={handleShowMore}
           >
-            Show More <MdKeyboardArrowDown className="text-2xl ml-3" />
+            Show More
           </button>
         )}
       </nav>
