@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^6.2.1",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.5.1",
     "next": "12.1.5",
