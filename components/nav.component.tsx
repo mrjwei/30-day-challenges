@@ -62,7 +62,6 @@ export const Nav = ({
                         transition-all
                         ease-in-out
                         duration-300
-                        text-gray-400
                         whitespace-nowrap
                         overflow-hidden
                         text-ellipsis
@@ -70,7 +69,6 @@ export const Nav = ({
                         after:block
                         after:w-[3px]
                         after:h-full
-                        after:bg-gray-100
                         after:absolute
                         after:top-0
                         after:left-0
@@ -80,7 +78,11 @@ export const Nav = ({
                         hover:text-red-primary
                         hover:after:bg-red-primary
                         hover:bg-red-light
-                        ${isActiveLink(query.id, id) && "text-red-primary after:bg-red-primary"}
+                        ${
+                          isActiveLink(query.id, id) ?
+                          "text-red-primary after:bg-red-primary" :
+                          "text-gray-400 after:bg-gray-100"
+                        }
                         p-2
                         pl-4
                       `}
