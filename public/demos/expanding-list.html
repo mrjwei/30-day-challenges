@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expanding List</title>
+  <style>
+    ul {
+      list-style: none;
+      width: 200px;
+      margin: 20px auto;
+    }
+    li {
+      position: relative;
+      padding-left: 25px;
+    }
+    li::before {
+      content: url(./minus.svg);
+      display: block;
+      position: absolute;
+      line-height: 15px;
+      left: 0;
+      top: 0;
+    }
+    .closed::before {
+      content: url(./plus.svg);
+      top: calc(50% - 7.5px);
+    }
+  </style>
+</head>
+<body>
+  <ul is="expanding-list">
+    <li>
+      Fruits
+      <ul>
+        <li>Apple</li>
+        <li>Orange</li>
+        <li>
+          Others
+          <ul>
+            <li>Watermelon</li>
+            <li>Grape</li>
+            <li>Banana</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      Vegetables
+      <ul>
+        <li>Onion</li>
+        <li>Potato</li>
+        <li>Spinach</li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+    class ExpandingList extends HTMLUListElement {
+      constructor() {
+        super()
+
+        const uls = this.querySelectorAll("ul")
+        const lis = this.querySelectorAll("li")
+
+        uls.forEach(ul => {
+          ul.style.display = "none"
+        })
+
+        lis.forEach(li => {
+          if (li.querySelectorAll("ul").length > 0) {
+            li.classList.add("closed")
+            const textNode = li.childNodes[0]
+            const span = document.createElement("span")
+            span.textContent = textNode.textContent
+            span.style.cursor = "pointer"
+            span.onclick = this.toggleListVisibility
+            li.insertBefore(span, textNode)
+            textNode.remove()
+          }
+        })
+      }
+
+      toggleListVisibility(event) {
+        const listToToggle = event.target.nextElementSibling
+        if (listToToggle.style.display === "block") {
+          listToToggle.style.display = "none"
+          event.target.parentNode.classList.add("closed")
+        } else {
+          listToToggle.style.display = "block"
+          event.target.parentNode.classList.remove("closed")
+        }
+      }
+    }
+
+    customElements.define("expanding-list", ExpandingList, {extends: "ul"})
+  </script>
+</body>
+</html>
