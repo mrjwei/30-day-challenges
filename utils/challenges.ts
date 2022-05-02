@@ -61,12 +61,13 @@ const remarkIframePlugin = () => {
         const data = node.data || (node.data = {})
         const attributes = node.attributes || {}
         const filename = attributes.filename
+        const height = attributes.height || 500
 
         data.hName = 'iframe'
         data.hProperties = {
           src: '/demos/' + filename,
           width: '100%',
-          height: 500,
+          height,
           frameBorder: 0,
           allow: 'picture-in-picture',
           allowFullScreen: true
