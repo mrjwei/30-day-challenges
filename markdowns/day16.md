@@ -6,7 +6,7 @@ title: "Web Components (Custom Square)"
 
 Today, I learned life cycle callbacks of Web Components with the [Custom Square](https://github.com/mdn/web-components-examples/tree/main/life-cycle-callbacks) example from [MDN](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks) and tried and built it myself.
 
-Live demo can be found [here](https://mdn.github.io/web-components-examples/life-cycle-callbacks/)
+Live demo can be found [here](https://mdn.github.io/web-components-examples/life-cycle-callbacks/).
 
 ## Code
 
