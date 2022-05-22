@@ -2,7 +2,7 @@
 title: "Handy Todo (Perf Tuning) + CSS Loading Animation"
 ---
 
-# Day 28: Handy Todo (Perf Tuning) + CSS Loading Animation
+# Day 29: Handy Todo (Perf Tuning) + CSS Loading Animation
 
 Today, I did the following tasks.
 
