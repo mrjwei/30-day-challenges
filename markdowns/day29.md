@@ -20,7 +20,7 @@ Today, I did the following tasks.
 
 ## CSS Loading Animation
 
-Inspired by [this project](https://projects.lukehaas.me/css-loaders/), I tried and build a very basic loading animation myself.
+Inspired by [this project](https://projects.lukehaas.me/css-loaders/), I tried and built a very basic loading animation myself.
 
 ### Demo
 
