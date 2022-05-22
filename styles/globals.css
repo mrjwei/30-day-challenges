@@ -21,4 +21,14 @@
   p {
     @apply text-base;
   }
+  img[src$="#float"] {
+    width: 48%;
+    float: left;
+  }
+  img[src$="#float"]:nth-child(even) {
+    margin-left: 4%;
+  }
+  img[src$="#float"]:last-child::after {
+    clear: both;
+  }
 }
