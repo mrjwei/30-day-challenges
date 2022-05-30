@@ -1,5 +1,5 @@
 import {useState, useEffect, useCallback} from 'react'
-import {Header, Nav, MobileNav} from '.'
+import {Header, Nav, MobileNav, Footer} from '.'
 
 export const Layout = ({metas, children}: {metas: any, children: React.ReactNode}) => {
   const [windowWidth, setWindowWidth] = useState<null | number>(null)
@@ -39,22 +39,11 @@ export const Layout = ({metas, children}: {metas: any, children: React.ReactNode
     <div>
       <Header handleMenuToggle={handleMenuToggle} />
       <div className="container px-6 py-12 md:grid md:grid-cols-4 md:gap-12 xl:px-24">
-        {windowWidth < 768 ? (
-          <MobileNav
-            metas={metas}
-            isOpen={isMenuOpen}
-            handleMenuToggle={handleMenuToggle}
-          />
-        ) : (
-          <Nav
-            metas={metas}
-            handleMenuToggle={handleMenuToggle}
-          />
-        )}
         <main className="md:col-span-3">
           {children}
         </main>
       </div>
+      <Footer />
     </div>
   )
 }
