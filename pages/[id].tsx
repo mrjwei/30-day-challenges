@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import {Layout} from '../components'
 import {
   getParams,
   convertMarkdownToHTML,
@@ -17,7 +16,8 @@ const Challenge = ({
   prevId,
   prevTitle,
   nextId,
-  nextTitle
+  nextTitle,
+  type
 }: {
   metas: IMeta[],
   activeId: string,
@@ -25,7 +25,8 @@ const Challenge = ({
   prevId: string,
   prevTitle: string,
   nextId: string,
-  nextTitle: string
+  nextTitle: string,
+  type: "top" | "sub"
 }) => {
   return (
     <>
