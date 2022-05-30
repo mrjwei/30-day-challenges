@@ -1,19 +1,25 @@
 import {memo} from 'react'
 import Link from 'next/link'
-import {MdMenu, MdHome} from 'react-icons/md'
+import {MdMenu, MdHome, MdSearch} from 'react-icons/md'
 import {Github, Twitter} from '../components'
 
 export const Header = ({handleMenuToggle}: any) => {
   return (
-    <header className="bg-red-light relative">
+    <header className="relative">
       <div className="container flex justify-between items-center px-6 py-3 xl:px-24">
+        <Link href="/">
+          <button>Home</button>
+        </Link>
         <Link href="/">
           <a>
             <h1 className="text-red-primary text-xl md:text-2xl">30-Day Challenges</h1>
             <span className="text-red-secondary">By Jesse Wei</span>
           </a>
         </Link>
-        <div
+        <button>
+          <MdSearch />
+        </button>
+        {/* <div
           className="flex items-center"
         >
           <Link href="https://github.com/mrjwei">
@@ -52,7 +58,7 @@ export const Header = ({handleMenuToggle}: any) => {
           onClick={handleMenuToggle}
         >
           <MdMenu size={30}/>
-        </button>
+        </button> */}
       </div>
     </header>
   )
