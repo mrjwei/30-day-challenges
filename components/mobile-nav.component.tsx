@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {useRouter} from 'next/router'
-import {IMeta} from '../types'
+import {IMarkdownData} from '../types'
 import {MdOutlineClose} from 'react-icons/md'
 
 export const MobileNav = ({
@@ -8,7 +8,7 @@ export const MobileNav = ({
   isOpen,
   handleMenuToggle
 }: {
-  metas: IMeta[],
+  metas: IMarkdownData[],
   isOpen: boolean,
   handleMenuToggle: () => void
 }) => {
@@ -60,8 +60,8 @@ export const MobileNav = ({
             </a>
           </Link>
           {metas
-            .filter((meta: IMeta) => meta.id !== "top")
-            .map((meta: IMeta) => {
+            .filter((meta: IMarkdownData) => meta.id !== "top")
+            .map((meta: IMarkdownData) => {
               const {id, title} = meta
               return (
                 <li

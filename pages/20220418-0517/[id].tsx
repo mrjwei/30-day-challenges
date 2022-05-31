@@ -5,9 +5,9 @@ import {
   getMarkdownIdsAndTitles,
   getPrevIdAndTitle,
   getNextIdAndTitle
-} from '../utils'
-import {IMeta} from '../types';
-import {Pagination} from '../components'
+} from '../../utils'
+import {IMarkdownData} from '../../types';
+import {Pagination} from '../../components'
 
 const Challenge = ({
   metas,
@@ -19,7 +19,7 @@ const Challenge = ({
   nextTitle,
   type
 }: {
-  metas: IMeta[],
+  metas: IMarkdownData[],
   activeId: string,
   content: string,
   prevId: string,
@@ -59,7 +59,7 @@ const Challenge = ({
 export default Challenge
 
 export const getStaticPaths = () => {
-  const paths = getParams()
+  const paths = getParams("20220418-0517")
   return {
     paths,
     fallback: false
@@ -67,8 +67,8 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = async (context: any) => {
-  const metas = getMarkdownIdsAndTitles()
-  const content = await convertMarkdownToHTML(context.params.id)
+  const metas = getMarkdownIdsAndTitles("20220418-0517")
+  const content = await convertMarkdownToHTML(context.params.id, "20220418-0517")
   const [prevId, prevTitle] = getPrevIdAndTitle(metas, context.params.id)
   const [nextId, nextTitle] = getNextIdAndTitle(metas, context.params.id)
   return {

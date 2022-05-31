@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer>
       <div
-          className="flex items-center"
+          className="container flex items-center"
         >
           <Link href="https://twitter.com/jweiit">
             <a

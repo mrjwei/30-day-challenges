@@ -1,4 +1,4 @@
-import {IMeta} from '../types'
+import {IMarkdownData} from '../types'
 
 export const calcInitNumNavItemsToDisplay = (asPath: string) => {
   if (asPath === "/" || asPath === "/top" || parseInt(asPath.replace("/day", "")) < 6) {
@@ -22,7 +22,7 @@ export const isActiveLink = (queryId: string | string[] | undefined, id: string)
 }
 
 export const getPrevIdAndTitle = (
-  metas: IMeta[],
+  metas: IMarkdownData[],
   activeId: string
   ) => {
   const currentIndex = metas.findIndex(meta => meta.id === activeId)
@@ -37,7 +37,7 @@ export const getPrevIdAndTitle = (
 
 
 export const getNextIdAndTitle = (
-  metas: IMeta[],
+  metas: IMarkdownData[],
   activeId: string
 ) => {
   const currentIndex = metas.findIndex(meta => meta.id === activeId)

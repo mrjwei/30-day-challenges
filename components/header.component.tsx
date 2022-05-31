@@ -4,12 +4,16 @@ import {MdSearch} from 'react-icons/md'
 export const Header = ({type}: any) => {
   return type === "top" ? (
     <header>
-      <Link href="/">
-        <a>
-          <h1 className="text-red-primary text-xl md:text-2xl">30-Day Challenges</h1>
-          <span className="text-red-secondary">By Jesse Wei</span>
-        </a>
-      </Link>
+      <div className='container mt-12'>
+        <Link href="/">
+          <a>
+            <h1 className="text-red-primary font-extrabold uppercase text-xl md:text-5xl">
+              <span className='block'>30-Day Challenges</span>
+              <span className='block'>By Jesse Wei</span>
+            </h1>
+          </a>
+        </Link>
+      </div>
     </header>
   ) : (
     <header className="relative">
