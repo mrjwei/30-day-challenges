@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply leading-[calc(1em+0.5rem)];
   }
   h1 {
@@ -30,5 +33,26 @@
   }
   img[src$="#float"]:last-child::after {
     clear: both;
+  }
+}
+
+@layer components {
+  .accordion {
+    @apply w-full text-red-primary text-4xl pr-3 py-6 mb-6 flex justify-between border-b-[1px] border-gray-200;
+  }
+  .btn {
+    @apply text-red-primary text-xl border-[1px] border-red-primary rounded-sm w-16 py-2;
+  }
+  .btn-lg {
+    @apply btn w-24;
+  }
+  .btn-light {
+    @apply btn text-white border-white;
+  }
+  .btn-lg-light {
+    @apply btn-lg text-white border-white;
+  }
+  .btn-text {
+    @apply text-red-primary text-xl py-6 border-b-[1px] border-gray-200;
   }
 }

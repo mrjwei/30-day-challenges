@@ -7,7 +7,16 @@ module.exports = {
   ],
   theme: {
     container: {
-      center: true
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        md: 0
+      },
+      screens: {
+        DEFAULT: "100%",
+        sm: "640px",
+        md: "768px"
+      }
     },
     colors: {
       'red': {
@@ -16,6 +25,7 @@ module.exports = {
         'light': '#fff5f5',
       },
       gray: colors.gray,
+      white: colors.white
     },
     extend: {},
   },

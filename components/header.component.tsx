@@ -4,11 +4,11 @@ import {MdSearch} from 'react-icons/md'
 export const Header = ({type}: any) => {
   return type === "top" ? (
     <header>
-      <div className='container mt-12'>
+      <div className='container pt-12'>
         <Link href="/">
           <a>
-            <h1 className="text-red-primary font-extrabold uppercase text-xl md:text-5xl">
-              <span className='block'>30-Day Challenges</span>
+            <h1 className="text-red-primary font-extrabold uppercase text-4xl md:text-5xl">
+              <span className='block'>Everyday Challenges</span>
               <span className='block'>By Jesse Wei</span>
             </h1>
           </a>
@@ -16,19 +16,21 @@ export const Header = ({type}: any) => {
       </div>
     </header>
   ) : (
-    <header className="relative">
-      <div className="container flex justify-between items-center px-6 py-3 xl:px-24">
+    <header className="relative bg-red-primary">
+      <div className="container flex justify-between items-center py-6">
         <Link href="/">
-          <button>Home</button>
+          <button className='btn-lg-light'>Home</button>
         </Link>
         <Link href="/">
           <a>
-            <h1 className="text-red-primary text-xl md:text-2xl">30-Day Challenges</h1>
-            <span className="text-red-secondary">By Jesse Wei</span>
+            <h1 className="text-white font-extrabold uppercase text-xl leading-6 text-center">
+              <span className='block'>Everyday Challenges</span>
+              <span className='block'>By Jesse Wei</span>
+            </h1>
           </a>
         </Link>
         <button>
-          <MdSearch />
+          <MdSearch color='#fff' size={24} />
         </button>
       </div>
     </header>

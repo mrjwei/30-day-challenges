@@ -6,25 +6,25 @@ export const Footer = () => {
   return (
     <footer>
       <div
-          className="container flex items-center"
+          className="container py-3 flex items-center justify-end"
         >
           <Link href="https://twitter.com/jweiit">
             <a
-              className="mr-[calc(1.5rem-2.4px)]" // to offset left inner space of MdHome component
+              className="mr-8" // to offset left inner space of MdHome component
               target="_blank"
             >
               <Twitter
-                className="w-6 fill-red-primary"
+                className="w-5 fill-red-secondary"
               />
             </a>
           </Link>
           <Link href="https://github.com/mrjwei">
             <a
-              className="mr-6"
+              className="mr-8"
               target="_blank"
             >
               <Github
-                className="w-6 fill-red-primary"
+                className="w-5 fill-red-secondary"
               />
             </a>
           </Link>
@@ -33,8 +33,8 @@ export const Footer = () => {
               target="_blank"
             >
               <MdHome
-                size={28.8} // to make actual size 24
-                color="#b54e4e"
+                size={24} // to make actual size 24
+                color="#d9a2a2"
               />
             </a>
           </Link>
