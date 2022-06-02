@@ -1,7 +1,7 @@
 import {IMarkdownData} from '../types'
 
 export const calcInitNumNavItemsToDisplay = (asPath: string) => {
-  if (asPath === "/" || asPath === "/top" || parseInt(asPath.replace("/day", "")) < 6) {
+  if (asPath === "/" || parseInt(asPath.replace("/day", "")) < 6) {
     return 6
   }
   return parseInt(asPath.replace("/day", "")) + 1
