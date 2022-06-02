@@ -35,7 +35,7 @@ const Top = ({
       <ul>
         {groups.map(group => {
           return (
-            <li>
+            <li key={group.dir}>
               <button className='accordion' onClick={() => toggleAccordion(group.dir)}>
                 <span>{group.dir}</span>
                 <span>
@@ -47,14 +47,14 @@ const Top = ({
                 </span>
               </button>
               <ul className={`grid grid-cols-6 gap-3 sm:grid-cols-8 sm:gap-6 ${openedAccordions.includes(group.dir) ? "" : "hidden"}`}>
-                <li>
+                <li key="all">
                   <Link href={`/${group.dir}`}>
                     <button className='btn'>All</button>
                   </Link>
                 </li>
                 {group.markdowns.map(m => {
                   return (
-                    <li>
+                    <li key={m.id}>
                       <Link href={`/${group.dir}/${m.id}`}>
                         <button className='btn'>{m.id.replace("day", "D")}</button>
                       </Link>
