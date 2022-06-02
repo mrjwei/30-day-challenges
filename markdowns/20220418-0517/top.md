@@ -1,10 +1,10 @@
 ---
-title: "30-Day Challenges"
+title: "Everyday Challenges"
 ---
 
-# 30-Day Challenges
+# Everyday Challenges
 
-This is the app demonstrating my 30-day coding challenges.
+This is the app demonstrating my Everyday coding challenges.
 
 ## Why
 

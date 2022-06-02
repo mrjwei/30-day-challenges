@@ -1,4 +1,6 @@
 import {
+  getMarkdownGroupDirs,
+  getMarkdownGroupsData,
   getMarkdownIdsAndTitles,
   getParams,
   convertMarkdownToHTML
@@ -12,6 +14,8 @@ import {
 } from './functions'
 
 export {
+  getMarkdownGroupDirs,
+  getMarkdownGroupsData,
   getMarkdownIdsAndTitles,
   getParams,
   convertMarkdownToHTML,

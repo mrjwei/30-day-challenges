@@ -5,7 +5,7 @@ import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp
 } from 'react-icons/md'
-import {IMeta} from '../types'
+import {IMarkdownData} from '../types'
 import {
   calcInitNumNavItemsToDisplay,
   normalizeNavItemText,
@@ -16,7 +16,7 @@ export const Nav = ({
   metas,
   handleMenuToggle
 }: {
-  metas: IMeta[],
+  metas: IMarkdownData[],
   handleMenuToggle: () => void
 }) => {
   const {query, asPath} = useRouter()
@@ -44,7 +44,7 @@ export const Nav = ({
         <ul>
           {metas
             .slice(0, numToDisplay)
-            .map((meta: IMeta) => {
+            .map((meta: IMarkdownData) => {
               const {id, title} = meta
               return (
                 <li

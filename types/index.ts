@@ -1,9 +1,11 @@
 import {
-  IMeta,
+  IMarkdownData,
+  IGroupData,
   IParams
 } from './types'
 
 export type {
-  IMeta,
+  IMarkdownData,
+  IGroupData,
   IParams
 }

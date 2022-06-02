@@ -1,11 +1,13 @@
 import Link from 'next/link'
 
 export const Pagination = ({
+  groupDir,
   prevId,
   prevTitle,
   nextId,
   nextTitle
 }: {
+  groupDir: string,
   prevId: string | null,
   prevTitle: string | null,
   nextId: string | null,
@@ -14,7 +16,7 @@ export const Pagination = ({
   return (
     <div className="flex justify-between mt-8">
       {prevId ? (
-        <Link href={`/${prevId}`}>
+        <Link href={`/${groupDir}/${prevId}`}>
           <a
             className="
               text-red-primary
@@ -38,14 +40,14 @@ export const Pagination = ({
               md:p-6
             "
           >
-            Prev: {prevTitle === "30-Day Challenges" ? "Top" : `${prevTitle}`}
+            Prev: {prevTitle === "Everyday Challenges" ? "Top" : `${prevTitle}`}
           </a>
         </Link>
       ) : (
         <a></a>
       )}
       {nextId ? (
-        <Link href={`/${nextId}`}>
+        <Link href={`/${groupDir}/${nextId}`}>
           <a
             className="
             text-red-primary
