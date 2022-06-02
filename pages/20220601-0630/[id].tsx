@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import {
   getParams,
   convertMarkdownToHTML,
@@ -35,6 +36,27 @@ const Challenge = ({
         <meta name="description" content={`Everyday challenges: ${activeId}`} />
         <link rel="icon" href="/images/favicon.png" />
       </Head>
+      <nav className='mb-6'>
+        <ul className='flex text-red-primary'>
+          <li>
+            <Link href="/">
+              <a>
+                Home&nbsp;/&nbsp;
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/20220601-0630">
+              <a>
+                20220601-0630&nbsp;/&nbsp;
+              </a>
+            </Link>
+          </li>
+          <li className='font-bold'>
+            {activeId.replace("d", "D")}
+          </li>
+        </ul>
+      </nav>
       <div
         dangerouslySetInnerHTML={{
           __html: `
@@ -47,7 +69,7 @@ const Challenge = ({
         }}
       />
       <Pagination
-        groupDir="20220418-0517"
+        groupDir="20220601-0630"
         prevId={prevId}
         prevTitle={prevTitle}
         nextId={nextId}
@@ -60,7 +82,7 @@ const Challenge = ({
 export default Challenge
 
 export const getStaticPaths = () => {
-  const paths = getParams("20220418-0517")
+  const paths = getParams("20220601-0630")
   return {
     paths,
     fallback: false
@@ -68,8 +90,8 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = async (context: any) => {
-  const metas = getMarkdownIdsAndTitles("20220418-0517")
-  const content = await convertMarkdownToHTML(context.params.id, "20220418-0517")
+  const metas = getMarkdownIdsAndTitles("20220601-0630")
+  const content = await convertMarkdownToHTML(context.params.id, "20220601-0630")
   const [prevId, prevTitle] = getPrevIdAndTitle(metas, context.params.id)
   const [nextId, nextTitle] = getNextIdAndTitle(metas, context.params.id)
   return {

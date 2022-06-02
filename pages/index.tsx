@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Head from 'next/head'
 import Link from 'next/link'
+import {MdAdd, MdRemove} from 'react-icons/md'
 import {
   getMarkdownGroupDirs,
   getMarkdownGroupsData,
@@ -27,21 +28,35 @@ const Top = ({
   return (
     <div>
       <Head>
-        <title>30-Day Challenges: Jesse Wei</title>
-        <meta name="description" content="30-day challenges by Jesse Wei" />
+        <title>Everyday Challenges: Jesse Wei</title>
+        <meta name="description" content="Everyday challenges by Jesse Wei" />
         <link rel="icon" href="/images/favicon.png" />
       </Head>
       <ul>
         {groups.map(group => {
           return (
-            <li>
-              <button className='text-red-primary text-4xl' onClick={() => toggleAccordion(group.dir)}>{group.dir}</button>
-              <ul className={openedAccordions.includes(group.dir) ? "" : "hidden"}>
+            <li key={group.dir}>
+              <button className='accordion' onClick={() => toggleAccordion(group.dir)}>
+                <span>{group.dir}</span>
+                <span>
+                  {openedAccordions.includes(group.dir) ? (
+                    <MdRemove />
+                  ) : (
+                    <MdAdd />
+                  )}
+                </span>
+              </button>
+              <ul className={`grid grid-cols-6 gap-3 sm:grid-cols-8 sm:gap-6 ${openedAccordions.includes(group.dir) ? "" : "hidden"}`}>
+                <li key="all">
+                  <Link href={`/${group.dir}`}>
+                    <button className='btn'>All</button>
+                  </Link>
+                </li>
                 {group.markdowns.map(m => {
                   return (
-                    <li>
+                    <li key={m.id}>
                       <Link href={`/${group.dir}/${m.id}`}>
-                        <button className='text-red-primary'>{m.id}</button>
+                        <button className='btn'>{m.id.replace("day", "D")}</button>
                       </Link>
                     </li>
                   )
@@ -59,7 +74,6 @@ export default Top
 
 export const getStaticProps = () => {
   const groups = getMarkdownGroupsData(getMarkdownGroupDirs())
-  console.log(getMarkdownGroupDirs())
   return {
     props: {
       groups
