@@ -38,7 +38,7 @@ const All = ({
       <ul>
         {markdowns.map(m => {
           return (
-            <li>
+            <li key={m.id}>
               <Link href={`${pathname}/${m.id}`}>
                 <button className='btn-text w-full flex justify-between'>
                   <span>
