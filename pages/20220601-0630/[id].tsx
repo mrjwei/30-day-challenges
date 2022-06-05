@@ -1,14 +1,14 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from "next/head"
+import Link from "next/link"
 import {
   getParams,
   convertMarkdownToHTML,
   getMarkdownIdsAndTitles,
   getPrevIdAndTitle,
-  getNextIdAndTitle
-} from '../../utils'
-import {IMarkdownData} from '../../types';
-import {Pagination} from '../../components'
+  getNextIdAndTitle,
+} from "../../utils"
+import { IMarkdownData } from "../../types"
+import { Pagination } from "../../components"
 
 const Challenge = ({
   metas,
@@ -18,43 +18,37 @@ const Challenge = ({
   prevTitle,
   nextId,
   nextTitle,
-  type
+  type,
 }: {
-  metas: IMarkdownData[],
-  activeId: string,
-  content: string,
-  prevId: string,
-  prevTitle: string,
-  nextId: string,
-  nextTitle: string,
+  metas: IMarkdownData[]
+  activeId: string
+  content: string
+  prevId: string
+  prevTitle: string
+  nextId: string
+  nextTitle: string
   type: "top" | "sub"
 }) => {
   return (
     <>
       <Head>
-        <title>Everyday Challenges: {activeId}</title>
-        <meta name="description" content={`Everyday challenges: ${activeId}`} />
+        <title>Daily Challenges: {activeId}</title>
+        <meta name="description" content={`Daily challenges: ${activeId}`} />
         <link rel="icon" href="/images/favicon.png" />
       </Head>
-      <nav className='mb-6'>
-        <ul className='flex text-red-primary'>
+      <nav className="mb-6">
+        <ul className="flex text-red-primary">
           <li>
             <Link href="/">
-              <a>
-                Home&nbsp;/&nbsp;
-              </a>
+              <a>Home&nbsp;/&nbsp;</a>
             </Link>
           </li>
           <li>
             <Link href="/20220601-0630">
-              <a>
-                20220601-0630&nbsp;/&nbsp;
-              </a>
+              <a>20220601-0630&nbsp;/&nbsp;</a>
             </Link>
           </li>
-          <li className='font-bold'>
-            {activeId.replace("d", "D")}
-          </li>
+          <li className="font-bold">{activeId.replace("d", "D")}</li>
         </ul>
       </nav>
       <div
@@ -65,7 +59,7 @@ const Challenge = ({
             >
               ${content}
             </div>
-          `
+          `,
         }}
       />
       <Pagination
@@ -85,13 +79,16 @@ export const getStaticPaths = () => {
   const paths = getParams("20220601-0630")
   return {
     paths,
-    fallback: false
+    fallback: false,
   }
 }
 
 export const getStaticProps = async (context: any) => {
   const metas = getMarkdownIdsAndTitles("20220601-0630")
-  const content = await convertMarkdownToHTML(context.params.id, "20220601-0630")
+  const content = await convertMarkdownToHTML(
+    context.params.id,
+    "20220601-0630"
+  )
   const [prevId, prevTitle] = getPrevIdAndTitle(metas, context.params.id)
   const [nextId, nextTitle] = getNextIdAndTitle(metas, context.params.id)
   return {
@@ -102,12 +99,7 @@ export const getStaticProps = async (context: any) => {
       prevId,
       prevTitle,
       nextId,
-      nextTitle
-    }
+      nextTitle,
+    },
   }
 }
-
-
-
-
-

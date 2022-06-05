@@ -1,48 +1,46 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import {useRouter} from 'next/router'
-import {MdArrowForward} from 'react-icons/md'
-import {
-  getMarkdownIdsAndTitles,
-} from '../../utils'
-import {IMarkdownData} from '../../types';
+import Head from "next/head"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { MdArrowForward } from "react-icons/md"
+import { getMarkdownIdsAndTitles } from "../../utils"
+import { IMarkdownData } from "../../types"
 
-const All = ({
-  markdowns
-}: {
-  markdowns: IMarkdownData[]
-}) => {
-  const {pathname} = useRouter()
+const All = ({ markdowns }: { markdowns: IMarkdownData[] }) => {
+  const { pathname } = useRouter()
   return (
     <>
       <Head>
         <title>{pathname.substring(1)}: Challenges</title>
-        <meta name="description" content={`${pathname.substring(1)}: Challenges`} />
+        <meta
+          name="description"
+          content={`${pathname.substring(1)}: Challenges`}
+        />
         <link rel="icon" href="/images/favicon.png" />
       </Head>
-      <nav className='mb-6'>
-        <ul className='flex text-red-primary'>
+      <nav className="mb-6">
+        <ul className="flex text-red-primary">
           <li>
             <Link href="/">
-              <a>
-                Home&nbsp;/&nbsp;
-              </a>
+              <a>Home&nbsp;/&nbsp;</a>
             </Link>
           </li>
-          <li className='font-bold'>
-            &nbsp;20220601-0630
-          </li>
+          <li className="font-bold">&nbsp;20220601-0630</li>
         </ul>
       </nav>
-      <h2 className='text-red-primary text-4xl mb-6'>{pathname.substring(1)}</h2>
+      <h2 className="text-red-primary text-4xl mb-6">
+        {pathname.substring(1)}
+      </h2>
       <ul>
-        {markdowns.map(m => {
+        {markdowns.map((m) => {
           return (
             <li key={m.id}>
               <Link href={`${pathname}/${m.id}`}>
-                <button className='btn-text w-full flex justify-between'>
-                  <span>
-                    {m.id.replace("day", "D")}: {m.title}
+                <button className="btn-text w-full flex justify-between">
+                  <span className="text-left">
+                    {m.id.replace("day", "D")}:{" "}
+                    {m.title.length > 20
+                      ? m.title.substring(0, 20) + "..."
+                      : m.title}
                   </span>
                   <span>
                     <MdArrowForward />
@@ -63,12 +61,7 @@ export const getStaticProps = async () => {
   const markdowns = getMarkdownIdsAndTitles("20220601-0630")
   return {
     props: {
-      markdowns
-    }
+      markdowns,
+    },
   }
 }
-
-
-
-
-

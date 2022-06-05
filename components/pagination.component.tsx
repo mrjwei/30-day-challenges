@@ -1,16 +1,16 @@
-import Link from 'next/link'
+import Link from "next/link"
 
 export const Pagination = ({
   groupDir,
   prevId,
   prevTitle,
   nextId,
-  nextTitle
+  nextTitle,
 }: {
-  groupDir: string,
-  prevId: string | null,
-  prevTitle: string | null,
-  nextId: string | null,
+  groupDir: string
+  prevId: string | null
+  prevTitle: string | null
+  nextId: string | null
   nextTitle: string | null
 }) => {
   return (
@@ -40,7 +40,7 @@ export const Pagination = ({
               md:p-6
             "
           >
-            Prev: {prevTitle === "Everyday Challenges" ? "Top" : `${prevTitle}`}
+            Prev: {prevTitle === "Daily Challenges" ? "Top" : `${prevTitle}`}
           </a>
         </Link>
       ) : (
@@ -80,4 +80,3 @@ export const Pagination = ({
     </div>
   )
 }
-
