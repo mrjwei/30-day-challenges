@@ -41,7 +41,7 @@
     @apply w-full text-red-primary text-4xl pr-3 py-6 mb-6 flex justify-between border-b-[1px] border-gray-200;
   }
   .btn {
-    @apply text-red-primary text-xl border-[1px] border-red-primary rounded-sm w-16 py-2;
+    @apply text-red-primary border-[1px] border-red-primary rounded-sm text-lg w-14 py-1 md:text-xl md:w-16 md:py-2;
   }
   .btn-lg {
     @apply btn w-24;

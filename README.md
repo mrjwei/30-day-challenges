@@ -1,7 +1,7 @@
-# Everyday Challenges
+# Daily Challenges
 
-This is the app demonstrating my Everyday coding challenges.
-Check it out here: [Jesse Wei's Everyday Challenges](https://challenges.jessewei.jp/)
+This is the app demonstrating my Daily coding challenges.
+Check it out here: [Jesse Wei's Daily Challenges](https://challenges.jessewei.jp/)
 
 ## Why
 
