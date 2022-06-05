@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -7,6 +8,23 @@ import { IMarkdownData } from "../../types"
 
 const All = ({ markdowns }: { markdowns: IMarkdownData[] }) => {
   const { pathname } = useRouter()
+  const [winWidth, setWinWidth] = useState(0)
+
+  useEffect(() => {
+    const onResize = () => {
+      setWinWidth(window.innerWidth)
+    }
+
+    setWinWidth(window.innerWidth)
+
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+  }, [])
+
+  if (winWidth === 0) {
+    return <div>loading...</div>
+  }
+
   return (
     <>
       <Head>
@@ -38,8 +56,10 @@ const All = ({ markdowns }: { markdowns: IMarkdownData[] }) => {
                 <button className="btn-text w-full flex justify-between">
                   <span className="text-left">
                     {m.id.replace("day", "D")}:{" "}
-                    {m.title.length > 20
-                      ? m.title.substring(0, 20) + "..."
+                    {winWidth <= 768
+                      ? m.title.length > 20
+                        ? m.title.substring(0, 20) + "..."
+                        : m.title
                       : m.title}
                   </span>
                   <span>
